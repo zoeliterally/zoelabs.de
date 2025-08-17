@@ -1,51 +1,93 @@
-# Zoe Hanke
+# Zoe Hanke (Zoe.Literally)
 
-This file holds Informations about Zoe Hanke (Zoe.Literally), an IT Spezalist working at SJT SULTIONS (https://solutions.sjt.de)
+**IT Specialist & Full Stack Developer** at [SJT SOLUTIONS](https://solutions.sjt.de)
 
-## Technologies
+- **LinkedIn**: [zoeliterally](https://www.linkedin.com/in/zoeliterally)
+- **GitHub**: [@zoeliterally](https://github.com/zoeliterally)
+- **Website**: [zoelabs.de](https://zoelabs.de)
 
-### Lanuages
+---
 
-Java, Python, Go, PHP, Perl
+## 💼 Professional Experience
 
-### Databases
+### **SJT SOLUTIONS** *(Current)*
+**IT Specialist & Full Stack Developer** | 2023 - Present
+- Full stack development with focus on backend systems
+- Infrastructure automation and DevOps practices
+- Container orchestration with Docker and Kubernetes
+- CI/CD pipeline development and maintenance
 
-MySQL, MariaDB, SQLite, Elasticsearch, OpenSearch
+---
 
-### Web Stuff
+## 🛠️ Technical Skills
 
-CSS, Html, Javascript, XML, JSON
+### **Programming Languages**
+- **Backend**: Java, Python, Go, PHP, Perl
+- **Frontend**: JavaScript, HTML, CSS
+- **Data**: XML, JSON
 
-### Scripting
+### **Databases & Storage**
+- **Relational**: MySQL, MariaDB, SQLite
+- **Search**: Elasticsearch, OpenSearch
 
-PowerShell, Bash
+### **Infrastructure & DevOps**
+- **Containerization**: Docker, Kubernetes
+- **Virtualization**: VMware, Proxmox
+- **Operating Systems**: Linux, Windows
+- **Automation**: Ansible, PowerShell, Bash
 
-### Infra (Need a better word vor this)
+### **Frameworks & Libraries**
+- **Java**: Spring Boot
+- **Python**: Django, Flask, FastAPI
+- **Go**: Gin
+- **PHP**: Laravel
 
-Ansible, Linux, Windows, Docker, VMWare, Proxmox, Kubernetes
+### **CI/CD & Version Control**
+- **Version Control**: Git
+- **CI/CD**: GitLab CI/CD, Jenkins
 
-### Frameworks
+### **Monitoring & Observability**
+- **Monitoring**: CheckMK, Zabbix
 
-Spring Boot, Laravel, Gin, Django, Flask, FastAPI
+### **Backup & Recovery**
+- **Backup Solutions**: Veeam, Borg
 
-### Other Stuff
+---
 
-Gitlab CI/CD, Git, Jenkins
+## 🎯 What I Love
 
+- **Backend Development** (preferred)
+- **Full Stack Development**
+- **Automation & Scripting**
+- **CI/CD Pipeline Design**
+- **Infrastructure as Code**
+- **Performance Optimization**
 
-### Monitoring
+---
 
-CheckMK, Zabbix
+## 😅 What I Tolerate
 
-### Backup
+- **Windows Server Administration**
+- **Active Directory Management**
+- **Microsoft 365 / Entra ID**
+- **Microsoft Ecosystem** (necessary evil)
 
-Veeam, Borg
+---
 
-## things i love to do?
+## 🚀 Current Focus
 
-Programming (Backend preffered but also Fullstack), Automations, CI/CD, Scripting
+- **Go Development** - Building efficient microservices
+- **Docker & Kubernetes** - Container orchestration
+- **Automation** - Reducing manual tasks
+- **Modern Web Development** - Full stack solutions
 
-## things i dont love as much but need to do
+---
 
-Windows Server Administration, Active Directory, MS356, Entra and all the other Microsoft stuff.
+## 💡 Philosophy
+
+> "Automate everything that can be automated, optimize everything that can be optimized, and always keep learning."
+
+---
+
+*Last updated: 2025*
 

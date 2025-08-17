@@ -41,6 +41,9 @@ const commands = [
     'experience',
     'github',
     'linkedin',
+    'philosophy',
+    'focus',
+    'tolerate',
     'clear',
     'reboot',
     'ls',
@@ -184,28 +187,37 @@ function executeCommand(cmd) {
     
     switch (trimmedCmd) {
         case 'help':
-            addOutput('Available commands: help, about, contact, projects, skills, experience, github, linkedin, clear, reboot, ls, pwd, whoami');
+            addOutput('Available commands: help, about, contact, projects, skills, experience, github, linkedin, philosophy, focus, tolerate, clear, reboot, ls, pwd, whoami');
             break;
         case 'about':
-            addOutput('Zoe Hanke - Full Stack Developer specializing in Go, Docker, and modern web technologies.');
+            addOutput('Zoe Hanke - IT Specialist & Full Stack Developer at SJT SOLUTIONS. Specializing in backend development, automation, and modern web technologies. Passionate about Go, Docker, Kubernetes, and CI/CD pipelines.');
             break;
         case 'contact':
-            addOutput('You can reach me at: zoe@zoelabs.de');
+            addOutput('You can reach me at: zoe@zoelabs.de | LinkedIn: https://linkedin.com/in/zoeliterally | GitHub: https://github.com/zoeliterally');
             break;
         case 'projects':
-            addOutput('Current public projects: ZoeLabs.de (this site)');
+            addOutput('Current public projects: ZoeLabs.de (this site) - A minimalist terminal-themed website built with Go and vanilla web technologies.');
             break;
         case 'skills':
-            addOutput('Go, Docker, Kubernetes, JavaScript, HTML/CSS, Git, Linux, CI/CD, Microservices');
+            addOutput('Backend: Java, Python, Go, PHP, Perl | Frontend: JavaScript, HTML, CSS | Databases: MySQL, MariaDB, SQLite, Elasticsearch | Infrastructure: Docker, Kubernetes, Ansible, Linux, Windows | Frameworks: Spring Boot, Laravel, Gin, Django, Flask, FastAPI | CI/CD: GitLab CI/CD, Jenkins, Git');
             break;
         case 'experience':
-            addOutput('5+ years in software development, specializing in backend systems and DevOps.');
+            addOutput('IT Specialist & Full Stack Developer at SJT SOLUTIONS (2023-Present): Full stack development, infrastructure automation, container orchestration with Docker/Kubernetes, CI/CD pipeline development and maintenance.');
             break;
         case 'github':
-            addOutput('GitHub: https://github.com/zoelabs');
+            addOutput('GitHub: https://github.com/zoeliterally - Check out my projects and contributions!');
             break;
         case 'linkedin':
-            addOutput('LinkedIn: https://linkedin.com/in/zoelabs');
+            addOutput('LinkedIn: https://linkedin.com/in/zoeliterally - Connect with me professionally!');
+            break;
+        case 'philosophy':
+            addOutput('"Automate everything that can be automated, optimize everything that can be optimized, and always keep learning." - My approach to technology and development.');
+            break;
+        case 'focus':
+            addOutput('Current focus areas: Go Development (microservices), Docker & Kubernetes (container orchestration), Automation (reducing manual tasks), Modern Web Development (full stack solutions).');
+            break;
+        case 'tolerate':
+            addOutput('Things I tolerate but don\'t love: Windows Server Administration, Active Directory Management, Microsoft 365/Entra ID, and the entire Microsoft ecosystem (necessary evil).');
             break;
         case 'clear':
             clearTerminal();
