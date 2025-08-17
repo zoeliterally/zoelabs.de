@@ -1,0 +1,35 @@
+services:
+  web:
+    build: .
+    container_name: zoelabs-web
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - web
+    volumes:
+      - ./static:/app/static:ro
+
+  dev:
+    image: golang:1.24-alpine
+    container_name: zoelabs-dev
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - web
+    volumes:
+      - .:/app
+      - go-cache:/go
+    working_dir: /app
+    command: sh -c "go mod download && go run main.go"
+    environment:
+      - GOOS=linux
+      - CGO_ENABLED=0
+
+networks:
+  web:
+    external: true
+
+volumes:
+  go-cache:

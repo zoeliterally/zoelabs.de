@@ -1,0 +1,11 @@
+{{template "base" .}}
+
+{{define "content"}}
+<section class="error">
+    <div class="container">
+        <h1>{{.ErrorCode}} - {{.ErrorMessage}}</h1>
+        <p>{{.ErrorDescription}}</p>
+        <a href="/" class="cta-button">Zurück zur Startseite</a>
+    </div>
+</section>
+{{end}}

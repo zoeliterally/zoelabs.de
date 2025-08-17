@@ -1,0 +1,350 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="logo-ascii">
+
+        ______          _           _         
+        |___  /         | |         | |        
+           / / ___   ___| |     __ _| |__  ___ 
+          / / / _ \ / _ \ |    / _` | '_ \/ __|
+         / /_| (_) |  __/ |___| (_| | |_) \__ \
+        /_____\___/ \___|______\__,_|_.__/|___/
+                                            
+                                            
+           
+    </div>
+    
+    <div class="terminal">
+        <div class="terminal-content">
+            <div class="line boot-line" style="opacity: 0;">ZoeOS 2.0 Boot Sequence...</div>
+            <div class="line boot-line" style="opacity: 0;">Loading kernel modules...</div>
+            <div class="line boot-line" style="opacity: 0;">Initializing ZoeLabs framework...</div>
+            <div class="line boot-line" style="opacity: 0;">Starting web services...</div>
+            <div class="line boot-line" style="opacity: 0;">Ready for input, type 'help' to get started.</div>
+            <div class="line prompt" style="opacity: 0;">
+                <span class="prompt-text">anon@zoelabs:~$</span>
+                <input type="text" id="terminal-input" class="terminal-input" placeholder="" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Available commands for autocomplete
+const commands = [
+    'help',
+    'about',
+    'contact',
+    'projects',
+    'skills',
+    'experience',
+    'github',
+    'linkedin',
+    'clear',
+    'reboot',
+    'ls',
+    'pwd',
+    'whoami'
+];
+
+let commandHistory = [];
+let historyIndex = -1;
+
+const input = document.getElementById('terminal-input');
+const cursor = document.querySelector('.cursor');
+
+// Focus input on page load
+window.addEventListener('load', () => {
+    startBootSequence();
+});
+
+// Focus input when clicking anywhere
+document.body.addEventListener('click', () => {
+    const currentInput = document.querySelector('.terminal-input');
+    if (currentInput) {
+        currentInput.focus();
+    }
+});
+
+// Boot sequence animation
+function startBootSequence() {
+    const bootLines = document.querySelectorAll('.boot-line');
+    const prompt = document.querySelector('.prompt');
+    const input = document.getElementById('terminal-input');
+    
+    // Show boot lines one by one
+    bootLines.forEach((line, index) => {
+        setTimeout(() => {
+            line.style.transition = 'opacity 0.5s ease-in-out';
+            line.style.opacity = '1';
+        }, index * 200); // 200ms delay between each line (was 400ms)
+    });
+    
+    // Show prompt after boot sequence
+    setTimeout(() => {
+        prompt.style.transition = 'opacity 0.5s ease-in-out';
+        prompt.style.opacity = '1';
+        input.focus();
+    }, bootLines.length * 200 + 500); // Adjusted timing for faster sequence
+}
+
+// Handle input events
+input.addEventListener('input', (e) => {
+    handleInput(e);
+});
+
+// Handle keydown events
+input.addEventListener('keydown', (e) => {
+    handleKeydown(e);
+});
+
+// Handle input events for any input
+function handleInput(e) {
+    const value = e.target.value;
+    if (value.includes(' ')) {
+        // Handle autocomplete for commands with arguments
+        const parts = value.split(' ');
+        const command = parts[0];
+        const args = parts.slice(1).join(' ');
+        
+        if (command === 'help' && args.length > 0) {
+            // Autocomplete help topics
+            const helpTopics = ['commands', 'navigation', 'about'];
+            const match = helpTopics.find(topic => topic.startsWith(args));
+            if (match) {
+                e.target.value = `${command} ${match}`;
+                e.target.setSelectionRange(value.length, value.length);
+            }
+        }
+    } else {
+        // Autocomplete for single commands
+        const match = commands.find(cmd => cmd.startsWith(value) && cmd !== value);
+        if (match && value.length > 0) {
+            // Show suggestion
+            showSuggestion(match, value.length, e.target);
+        } else {
+            hideSuggestion();
+        }
+    }
+}
+
+// Handle keydown events for any input
+function handleKeydown(e) {
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const value = e.target.value;
+        const match = commands.find(cmd => cmd.startsWith(value) && cmd !== value);
+        if (match) {
+            e.target.value = match;
+            e.target.setSelectionRange(match.length, match.length);
+        }
+    } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const command = e.target.value;
+        
+        // Hide any autocomplete suggestion first
+        hideSuggestion();
+        
+        // Convert the input to static text to show the command
+        const input = e.target;
+        const promptLine = input.closest('.prompt');
+        const promptText = promptLine.querySelector('.prompt-text');
+        promptText.innerHTML = `anon@zoelabs:~$ <span style="color: #fff;">${command}</span>`;
+        
+        // Hide the input field
+        input.style.display = 'none';
+        
+        // Execute the command
+        executeCommand(command);
+        
+        commandHistory.push(command);
+        historyIndex = commandHistory.length;
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (historyIndex > 0) {
+            historyIndex--;
+            e.target.value = commandHistory[historyIndex] || '';
+        }
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            e.target.value = commandHistory[historyIndex] || '';
+        } else {
+            historyIndex = commandHistory.length;
+            e.target.value = '';
+        }
+    }
+}
+
+// Execute commands
+function executeCommand(cmd) {
+    const trimmedCmd = cmd.trim().toLowerCase();
+    
+    switch (trimmedCmd) {
+        case 'help':
+            addOutput('Available commands: help, about, contact, projects, skills, experience, github, linkedin, clear, reboot, ls, pwd, whoami');
+            break;
+        case 'about':
+            addOutput('Zoe Hanke - Full Stack Developer specializing in Go, Docker, and modern web technologies.');
+            break;
+        case 'contact':
+            addOutput('You can reach me at: zoe@zoelabs.de');
+            break;
+        case 'projects':
+            addOutput('Current public projects: ZoeLabs.de (this site)');
+            break;
+        case 'skills':
+            addOutput('Go, Docker, Kubernetes, JavaScript, HTML/CSS, Git, Linux, CI/CD, Microservices');
+            break;
+        case 'experience':
+            addOutput('5+ years in software development, specializing in backend systems and DevOps.');
+            break;
+        case 'github':
+            addOutput('GitHub: https://github.com/zoelabs');
+            break;
+        case 'linkedin':
+            addOutput('LinkedIn: https://linkedin.com/in/zoelabs');
+            break;
+        case 'clear':
+            clearTerminal();
+            return; // Don't add new prompt, clearTerminal handles it
+        case 'reboot':
+            addOutput('Rebooting system...');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000); // Simulate reboot delay
+            return; // Don't add new prompt, reboot will reload the page
+        case 'ls':
+            addOutput('about.txt  contact.txt  projects/  skills.txt  experience.txt');
+            break;
+        case 'pwd':
+            addOutput('/home/anon/zoelabs');
+            break;
+        case 'whoami':
+            addOutput('anon');
+            break;
+        case '':
+            // Empty command, just show new prompt
+            break;
+        default:
+            addOutput(`Command not found: ${trimmedCmd}. Type 'help' for available commands.`);
+    }
+    
+    // Add new prompt (except for clear command)
+    addNewPrompt();
+}
+
+// Add output to terminal
+function addOutput(text) {
+    const terminalContent = document.querySelector('.terminal-content');
+    const outputLine = document.createElement('div');
+    outputLine.className = 'line output';
+    outputLine.textContent = text;
+    terminalContent.appendChild(outputLine);
+    terminalContent.scrollTop = terminalContent.scrollHeight;
+}
+
+// Add new prompt
+function addNewPrompt() {
+    const terminalContent = document.querySelector('.terminal-content');
+    
+    const promptLine = document.createElement('div');
+    promptLine.className = 'line prompt';
+    promptLine.innerHTML = `
+        <span class="prompt-text">anon@zoelabs:~$</span>
+        <input type="text" class="terminal-input" placeholder="" autocomplete="off" spellcheck="false">
+    `;
+    terminalContent.appendChild(promptLine);
+    
+    // Focus the new input
+    const newInput = promptLine.querySelector('.terminal-input');
+    newInput.focus();
+    
+    // Add event listeners to new input
+    setupInputListeners(newInput);
+    
+    terminalContent.scrollTop = terminalContent.scrollHeight;
+}
+
+// Clear terminal
+function clearTerminal() {
+    const terminalContent = document.querySelector('.terminal-content');
+    
+    // Remove ALL content from terminal
+    terminalContent.innerHTML = '';
+    
+    // Add a single new prompt
+    const newPrompt = document.createElement('div');
+    newPrompt.className = 'line prompt';
+    newPrompt.innerHTML = `
+        <span class="prompt-text">anon@zoelabs:~$</span>
+        <input type="text" class="terminal-input" placeholder="" autocomplete="off" spellcheck="false">
+    `;
+    terminalContent.appendChild(newPrompt);
+    
+    // Focus the new input and setup listeners
+    const newInput = newPrompt.querySelector('.terminal-input');
+    newInput.focus();
+    setupInputListeners(newInput);
+}
+
+// Show autocomplete suggestion
+function showSuggestion(suggestion, currentLength, inputElement) {
+    let suggestionEl = document.querySelector('.suggestion');
+    if (!suggestionEl) {
+        suggestionEl = document.createElement('span');
+        suggestionEl.className = 'suggestion';
+        document.body.appendChild(suggestionEl);
+    }
+    
+    const inputRect = inputElement.getBoundingClientRect();
+    const textBeforeCursor = inputElement.value.substring(0, inputElement.selectionStart);
+    
+    // Create a temporary span to measure text width
+    const tempSpan = document.createElement('span');
+    tempSpan.style.font = window.getComputedStyle(inputElement).font;
+    tempSpan.style.visibility = 'hidden';
+    tempSpan.style.position = 'absolute';
+    tempSpan.style.whiteSpace = 'pre';
+    tempSpan.textContent = textBeforeCursor;
+    document.body.appendChild(tempSpan);
+    
+    const textWidth = tempSpan.offsetWidth;
+    document.body.removeChild(tempSpan);
+    
+    // Position suggestion at cursor position
+    suggestionEl.style.position = 'absolute';
+    suggestionEl.style.left = (inputRect.left + textWidth) + 'px';
+    suggestionEl.style.top = inputRect.top + 'px';
+    suggestionEl.style.color = '#666';
+    suggestionEl.style.fontFamily = window.getComputedStyle(inputElement).fontFamily;
+    suggestionEl.style.fontSize = window.getComputedStyle(inputElement).fontSize;
+    suggestionEl.style.lineHeight = window.getComputedStyle(inputElement).lineHeight;
+    suggestionEl.style.pointerEvents = 'none';
+    suggestionEl.style.zIndex = '1000';
+    suggestionEl.style.whiteSpace = 'pre';
+    suggestionEl.textContent = suggestion.substring(currentLength);
+}
+
+// Hide autocomplete suggestion
+function hideSuggestion() {
+    const suggestionEl = document.querySelector('.suggestion');
+    if (suggestionEl) {
+        suggestionEl.remove();
+    }
+}
+
+// Setup input listeners for new inputs
+function setupInputListeners(input) {
+    input.addEventListener('input', (e) => {
+        handleInput(e);
+    });
+    
+    input.addEventListener('keydown', (e) => {
+        handleKeydown(e);
+    });
+}
+</script>
+{{end}}
