@@ -45,10 +45,7 @@ const commands = [
     'focus',
     'tolerate',
     'clear',
-    'reboot',
-    'ls',
-    'pwd',
-    'whoami'
+    'reboot'
 ];
 
 let commandHistory = [];
@@ -187,7 +184,7 @@ function executeCommand(cmd) {
     
     switch (trimmedCmd) {
         case 'help':
-            addOutput('Available commands: help, about, contact, projects, skills, experience, github, linkedin, philosophy, focus, tolerate, clear, reboot, ls, pwd, whoami');
+            addOutput('Available commands: help, about, contact, projects, skills, experience, github, linkedin, philosophy, focus, tolerate, clear, reboot');
             break;
         case 'about':
             addOutput('Zoe Hanke - IT Specialist & Full Stack Developer at SJT SOLUTIONS. Specializing in backend development, automation, and modern web technologies. Passionate about Go, Docker, Kubernetes, and CI/CD pipelines.');
@@ -228,15 +225,6 @@ function executeCommand(cmd) {
                 window.location.reload();
             }, 2000); // Simulate reboot delay
             return; // Don't add new prompt, reboot will reload the page
-        case 'ls':
-            addOutput('about.txt  contact.txt  projects/  skills.txt  experience.txt');
-            break;
-        case 'pwd':
-            addOutput('/home/anon/zoelabs');
-            break;
-        case 'whoami':
-            addOutput('anon');
-            break;
         case '':
             // Empty command, just show new prompt
             break;

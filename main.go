@@ -54,7 +54,7 @@ func main() {
 func homeHandler(c *gin.Context) {
 	data := PageData{
 		Title:       "ZoeLabs",
-		Description: "ZoeLabs - Webentwicklung & Beratung",
+		Description: "Zoe Hanke - IT Specialist & Full Stack Developer",
 	}
 	c.HTML(http.StatusOK, "home.html", data)
 }
@@ -68,10 +68,10 @@ func healthHandler(c *gin.Context) {
 
 func notFoundHandler(c *gin.Context) {
 	data := PageData{
-		Title:           "404 - Seite nicht gefunden",
+		Title:           "404 - Page Not Found",
 		ErrorCode:       "404",
-		ErrorMessage:    "Seite nicht gefunden",
-		ErrorDescription: "Die angeforderte Seite existiert nicht.",
+		ErrorMessage:    "Page Not Found",
+		ErrorDescription: "The requested page does not exist.",
 	}
 	c.HTML(http.StatusNotFound, "error.html", data)
 }
