@@ -28,6 +28,9 @@ COPY --from=builder /app/main .
 # Copy static files
 COPY --from=builder /app/static ./static
 
+# Copy templates
+COPY --from=builder /app/templates ./templates
+
 # Expose port
 EXPOSE 8080
 
