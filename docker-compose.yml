@@ -5,31 +5,12 @@ services:
     restart: unless-stopped
     ports:
       - "8080:8080"
-    networks:
-      - web
     volumes:
       - ./static:/app/static:ro
-
-  dev:
-    image: golang:1.24-alpine
-    container_name: zoelabs-dev
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-    networks:
-      - web
-    volumes:
-      - .:/app
-      - go-cache:/go
-    working_dir: /app
-    command: sh -c "go mod download && go run main.go"
-    environment:
-      - GOOS=linux
-      - CGO_ENABLED=0
-
-networks:
-  web:
-    external: true
-
-volumes:
-  go-cache:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.zoelabs.rule=Host(`zoelabs.de`)"
+      - "traefik.http.routers.zoelabs.entrypoints=websecure"
+      - "traefik.http.routers.zoelabs.tls.certresolver=myresolver"
+      - "traefik.http.services.zoelabs.loadbalancer.server.port=8080"
+      - "traefik.docker.network=traefik_net"
