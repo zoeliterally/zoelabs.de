@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     ports:
       - "8080:8080"
+    networks:
+      - traefik_net
     volumes:
       - ./static:/app/static:ro
     labels:
@@ -14,3 +16,7 @@ services:
       - "traefik.http.routers.zoelabs.tls.certresolver=myresolver"
       - "traefik.http.services.zoelabs.loadbalancer.server.port=8080"
       - "traefik.docker.network=traefik_net"
+
+networks:
+  traefik_net:
+    external: true
