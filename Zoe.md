@@ -1,6 +1,6 @@
 # Zoe Hanke (Zoe.Literally)
 
-**IT Specialist & Full Stack Developer** at [SJT SOLUTIONS](https://solutions.sjt.de)
+**Head of IT & Full Stack Developer** at [SJT SOLUTIONS](https://solutions.sjt.de)
 
 - **LinkedIn**: [zoeliterally](https://www.linkedin.com/in/zoeliterally)
 - **GitHub**: [@zoeliterally](https://github.com/zoeliterally)
@@ -8,10 +8,10 @@
 
 ---
 
-## 💼 Professional Experience
+## Professional Experience
 
 ### **SJT SOLUTIONS** *(Current)*
-**IT Specialist & Full Stack Developer** | 2023 - Present
+**Head of IT & Full Stack Developer** | 2023 - Present
 - Full stack development with focus on backend systems
 - Infrastructure automation and DevOps practices
 - Container orchestration with Docker and Kubernetes
@@ -19,7 +19,7 @@
 
 ---
 
-## 🛠️ Technical Skills
+## Technical Skills
 
 ### **Programming Languages**
 - **Backend**: Java, Python, Go, PHP, Perl
@@ -27,7 +27,7 @@
 - **Data**: XML, JSON
 
 ### **Databases & Storage**
-- **Relational**: MySQL, MariaDB, SQLite
+- **Relational**: MySQL, MariaDB, SQLite, PostgreSQL
 - **Search**: Elasticsearch, OpenSearch
 
 ### **Infrastructure & DevOps**
@@ -54,7 +54,7 @@
 
 ---
 
-## 🎯 What I Love
+## What I Love
 
 - **Backend Development** (preferred)
 - **Full Stack Development**
@@ -65,7 +65,7 @@
 
 ---
 
-## 😅 What I Tolerate
+## What I Tolerate
 
 - **Windows Server Administration**
 - **Active Directory Management**
@@ -74,7 +74,7 @@
 
 ---
 
-## 🚀 Current Focus
+## Current Focus
 
 - **Go Development** - Building efficient microservices
 - **Docker & Kubernetes** - Container orchestration
@@ -83,7 +83,7 @@
 
 ---
 
-## 💡 Philosophy
+## Philosophy
 
 > "Automate everything that can be automated, optimize everything that can be optimized, and always keep learning."
 

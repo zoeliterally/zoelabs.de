@@ -1,10 +1,12 @@
 package main
 
 import (
+	"compress/gzip"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -28,11 +30,13 @@ func main() {
 	// Load HTML templates
 	r.LoadHTMLGlob("templates/*.html")
 
-	// Serve static files
-	r.Static("/static", "./static")
+	// Serve static files with cache headers
+	r.StaticFS("/static", http.Dir("./static"))
+	r.Use(staticCacheMiddleware())
 
-	// Middleware for logging and security headers
+	// Middleware for logging, compression, and security headers
 	r.Use(loggingMiddleware())
+	r.Use(gzipMiddleware())
 	r.Use(securityHeadersMiddleware())
 
 	// Routes
@@ -94,4 +98,58 @@ func securityHeadersMiddleware() gin.HandlerFunc {
 		c.Header("Referrer-Policy", "strict-origin-when-cross-origin")
 		c.Next()
 	}
+}
+
+func staticCacheMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Add cache headers for static assets
+		path := c.Request.URL.Path
+		if len(path) >= 8 && path[:8] == "/static/" {
+			c.Header("Cache-Control", "public, max-age=31536000, immutable")
+			c.Header("Expires", time.Now().Add(365*24*time.Hour).Format(http.TimeFormat))
+		}
+		c.Next()
+	}
+}
+
+func gzipMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Check if client accepts gzip encoding
+		if !strings.Contains(c.GetHeader("Accept-Encoding"), "gzip") {
+			c.Next()
+			return
+		}
+
+		// Skip compression for already compressed or binary content
+		path := c.Request.URL.Path
+		if strings.HasSuffix(path, ".svg") || strings.HasSuffix(path, ".ico") || strings.HasSuffix(path, ".png") || strings.HasSuffix(path, ".jpg") || strings.HasSuffix(path, ".jpeg") || strings.HasSuffix(path, ".gif") || strings.HasSuffix(path, ".webp") {
+			c.Next()
+			return
+		}
+
+		// Set gzip writer
+		c.Header("Content-Encoding", "gzip")
+		c.Header("Vary", "Accept-Encoding")
+		
+		gz := gzip.NewWriter(c.Writer)
+		defer func() {
+			gz.Close()
+		}()
+
+		c.Writer = &gzipResponseWriter{ResponseWriter: c.Writer, Writer: gz}
+		c.Next()
+	}
+}
+
+type gzipResponseWriter struct {
+	gin.ResponseWriter
+	Writer *gzip.Writer
+}
+
+func (w *gzipResponseWriter) Write(b []byte) (int, error) {
+	return w.Writer.Write(b)
+}
+
+func (w *gzipResponseWriter) WriteString(s string) (int, error) {
+	return w.Writer.Write([]byte(s))
 }

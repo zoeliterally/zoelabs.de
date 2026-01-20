@@ -5,7 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+    <style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#fff;background:#0a0a0a;height:100%}
+body{background:#0a0a0a;margin:0;padding:0;height:100vh;overflow:hidden}
+.container{width:100%;height:100vh;position:relative;padding:25px}
+.logo-ascii{position:absolute;top:0px;right:40px;font-family:'Courier New',monospace;font-size:clamp(0.6rem, 1.5vw, 1rem);font-weight:bold;line-height:1.2;white-space:pre;color:#5BCEFA;background:linear-gradient(135deg,#5BCEFA 0%,#F5A9B8 50%,#FFFFFF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;z-index:10;text-align:right;pointer-events:none}
+.terminal-text{flex-grow:1;display:flex;flex-direction:column;justify-content:flex-start}
+.terminal{background:#000;border:1px solid #333;overflow:hidden;font-family:'DejaVu Sans Mono','Courier New',monospace;text-align:left;width:100%;height:100%;margin:0;display:flex;flex-direction:column;box-shadow:0 0 20px rgba(0,0,0,0.5);position:relative}
+.terminal-content{font-size:clamp(14px, 2.5vw, 18px);line-height:1.6;flex-grow:1;display:flex;flex-direction:column;justify-content:flex-start;padding:40px;overflow-y:auto;position:relative}
+.line{margin-bottom:12px;color:#00ff00;font-weight:400}
+.boot-line{margin-bottom:12px;color:#00ff00;font-weight:400}
+.prompt{color:#5BCEFA;margin-top:20px;font-weight:bold;display:flex;align-items:center;gap:8px}
+.prompt-text{color:#5BCEFA;white-space:nowrap}
+.terminal-input{background:transparent;border:none;outline:none;color:#fff;font-family:'DejaVu Sans Mono','Courier New',monospace;font-size:clamp(14px, 2.5vw, 18px);flex-grow:1;caret-color:#fff;caret-shape:underscore}
+.terminal-input::placeholder{color:transparent}
+.suggestion{position:absolute;pointer-events:none;z-index:1000}
+.output{color:#fff;margin-bottom:8px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+@media (max-width:768px){.container{padding:15px}.logo-ascii{top:0;right:30px;font-size:clamp(0.5rem, 1.2vw, 0.8rem)}.terminal-content{padding:30px}}
+@media (max-width:480px){.container{padding:10px}.logo-ascii{top:0;right:20px;font-size:clamp(0.4rem, 1vw, 0.6rem)}.terminal-content{padding:20px}}
+    </style>
     {{if .Description}}
     <meta name="description" content="{{.Description}}">
     {{end}}
