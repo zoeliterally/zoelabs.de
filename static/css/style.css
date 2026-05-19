@@ -114,12 +114,16 @@ body{
     font-family:'DejaVu Sans Mono','Courier New',monospace;
     font-size:clamp(14px, 2.5vw, 18px);
     flex-grow:1;
-    caret-color:#fff;
-    caret-shape:underscore
+    min-width:1ch;
+    caret-color:#fff
 }
 
 .terminal-input::placeholder{
     color:transparent
+}
+
+.prompt:focus-within .terminal-input{
+    animation:inputCaretPulse 1s steps(1,end) infinite
 }
 
 .suggestion{
@@ -166,6 +170,11 @@ body{
 @keyframes blink{
     0%,50%{opacity:1}
     51%,100%{opacity:0}
+}
+
+@keyframes inputCaretPulse{
+    0%,50%{caret-color:#fff}
+    51%,100%{caret-color:transparent}
 }
 
 /* Responsive */

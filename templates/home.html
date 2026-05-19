@@ -63,10 +63,7 @@ window.addEventListener('load', () => {
 
 // Focus input when clicking anywhere
 document.body.addEventListener('click', () => {
-    const currentInput = document.querySelector('.terminal-input');
-    if (currentInput) {
-        currentInput.focus();
-    }
+    focusTerminalInput();
 });
 
 // Boot sequence animation
@@ -87,8 +84,15 @@ function startBootSequence() {
     setTimeout(() => {
         prompt.style.transition = 'opacity 0.5s ease-in-out';
         prompt.style.opacity = '1';
-        input.focus();
+        focusTerminalInput();
     }, bootLines.length * 200 + 500); // Adjusted timing for faster sequence
+}
+
+function focusTerminalInput() {
+    const activeInput = document.querySelector('.prompt:last-child .terminal-input');
+    if (activeInput) {
+        activeInput.focus({ preventScroll: true });
+    }
 }
 
 // Handle input events
@@ -290,7 +294,7 @@ function addNewPrompt() {
     
     // Focus the new input
     const newInput = promptLine.querySelector('.terminal-input');
-    newInput.focus();
+    focusTerminalInput();
     
     // Add event listeners to new input
     setupInputListeners(newInput);
@@ -316,8 +320,8 @@ function clearTerminal() {
     
     // Focus the new input and setup listeners
     const newInput = newPrompt.querySelector('.terminal-input');
-    newInput.focus();
     setupInputListeners(newInput);
+    focusTerminalInput();
 }
 
 // Show autocomplete suggestion
