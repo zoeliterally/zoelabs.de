@@ -8,7 +8,7 @@ A minimalist, terminal-themed personal website for Zoe Hanke built with Go and v
 - **Dark Mode**: Sleek dark theme with Trans pride colors
 - **Responsive Design**: Works on all devices
 - **Portfolio Gateway**: Recruiter-friendly commands for experience, skills, AI-assisted engineering, and public portfolio links
-- **Fast Loading**: Small, dependency-light page with inline terminal interactions
+- **Fast Loading**: Compressed main document stays under 14kb, keeping the first view small enough for a typical initial TCP window
 - **Docker Support**: Easy deployment with Docker Compose
 - **Hot Reload**: Development with Air for instant feedback
 
