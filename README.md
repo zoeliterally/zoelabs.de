@@ -7,7 +7,8 @@ A minimalist, terminal-themed personal website for Zoe Hanke built with Go and v
 - **Terminal UI**: Interactive command-line interface
 - **Dark Mode**: Sleek dark theme with Trans pride colors
 - **Responsive Design**: Works on all devices
-- **Fast Loading**: Under 14kb main page
+- **Portfolio Gateway**: Recruiter-friendly commands for experience, skills, AI-assisted engineering, and public portfolio links
+- **Fast Loading**: Small, dependency-light page with inline terminal interactions
 - **Docker Support**: Easy deployment with Docker Compose
 - **Hot Reload**: Development with Air for instant feedback
 
@@ -117,10 +118,16 @@ The website features an interactive terminal with these commands:
 - `about` - About Zoe Hanke
 - `contact` - Contact information
 - `projects` - Current projects
+- `portfolio` - Public portfolio link
+- `ai` - AI-assisted engineering workflows
 - `skills` - Technical skills
 - `experience` - Work experience
+- `leadership` - Technical leadership profile
+- `timeline` - Career timeline
 - `github` - GitHub profile
 - `linkedin` - LinkedIn profile
+- `philosophy` - Working philosophy
+- `focus` - Current focus areas
 - `clear` - Clear terminal
 - `reboot` - Restart the system
 - `ls` - List files
@@ -155,9 +162,10 @@ This project is private and proprietary.
 
 ## 👤 Author
 
-**Zoe Hanke** - Full Stack Developer
+**Zoe Hanke** - Head of IT · Platform Engineer · Full Stack Developer
 - Website: [zoelabs.de](https://zoelabs.de)
 - GitHub: [@zoeliterally](https://github.com/zoeliterally)
+- Portfolio: [github.com/zoeliterally/portfolio](https://github.com/zoeliterally/portfolio)
 
 ---
 

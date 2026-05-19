@@ -58,7 +58,7 @@ func main() {
 func homeHandler(c *gin.Context) {
 	data := PageData{
 		Title:       "ZoeLabs",
-		Description: "Zoe Hanke - IT Specialist & Full Stack Developer",
+		Description: "Zoe Hanke - Head of IT, Platform Engineer, Full Stack Developer, and AI-assisted Engineering practitioner.",
 	}
 	c.HTML(http.StatusOK, "home.html", data)
 }

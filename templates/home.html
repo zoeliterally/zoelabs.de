@@ -33,13 +33,19 @@ const commands = [
     'about',
     'contact',
     'projects',
+    'portfolio',
+    'ai',
     'skills',
     'experience',
+    'leadership',
+    'timeline',
     'github',
     'linkedin',
     'philosophy',
     'focus',
-    'tolerate',
+    'whoami',
+    'pwd',
+    'ls',
     'clear',
     'reboot'
 ];
@@ -180,37 +186,55 @@ function executeCommand(cmd) {
     
     switch (trimmedCmd) {
         case 'help':
-            addOutput('Available commands: help, about, contact, projects, skills, experience, github, linkedin, philosophy, focus, tolerate, clear, reboot');
+            addOutput('Available commands: help, about, portfolio, projects, ai, skills, experience, leadership, timeline, contact, github, linkedin, philosophy, focus, whoami, pwd, ls, clear, reboot');
             break;
         case 'about':
-            addOutput('Zoe Hanke - IT Specialist & Full Stack Developer at SJT SOLUTIONS. Specializing in backend development, automation, and modern web technologies. Passionate about Go, Docker, Kubernetes, and CI/CD pipelines.');
+            addOutput('Zoe Hanke - Head of IT, Platform Engineer, Full Stack Developer, and AI-assisted Engineering practitioner. I build internal tools, automation platforms, infrastructure workflows, and operational systems for technical teams.');
             break;
         case 'contact':
-            addOutput('You can reach me at: zoe@zoelabs.de | LinkedIn: https://linkedin.com/in/zoeliterally | GitHub: https://github.com/zoeliterally');
+            addOutput('Contact: LinkedIn https://linkedin.com/in/zoeliterally | GitHub https://github.com/zoeliterally | Portfolio https://github.com/zoeliterally/portfolio');
             break;
         case 'projects':
-            addOutput('Current public projects: ZoeLabs.de (this site) - A minimalist terminal-themed website built with Go and vanilla web technologies.');
+            addOutput('Selected work: internal tooling and APIs, Docker/Ansible platform automation, Veeam/MSP backup infrastructure, document search with Elasticsearch/Tika, and legacy Oracle/PLSQL modernization context.');
+            break;
+        case 'portfolio':
+            addOutput('Public portfolio: https://github.com/zoeliterally/portfolio - role profiles, case studies, skills matrix, career timeline, and AI-assisted engineering workflow.');
+            break;
+        case 'ai':
+            addOutput('AI-assisted engineering: daily OpenAI/ChatGPT/Codex, Claude, Gemini, and GitHub Copilot usage for code exploration, review, debugging, documentation, architecture options, and agentic coding. Human ownership stays with architecture, security, validation, tests, and production decisions.');
             break;
         case 'skills':
-            addOutput('Backend: Java, Python, Go, PHP, Perl | Frontend: JavaScript, HTML, CSS | Databases: MySQL, MariaDB, SQLite, Elasticsearch | Infrastructure: Docker, Kubernetes, Ansible, Linux, Windows | Frameworks: Spring Boot, Laravel, Gin, Django, Flask, FastAPI | CI/CD: GitLab CI/CD, Jenkins, Git');
+            addOutput('Skills: Java/Spring Boot, Python/FastAPI/Flask, Go, SQL, PostgreSQL, MariaDB, SQLite, Elasticsearch, Docker, Traefik, Ansible, GitLab CI/CD, Linux, Veeam, Checkmk, Wazuh, Entra ID, OAuth2/OIDC, PowerShell, Bash.');
             break;
         case 'experience':
-            addOutput('IT Specialist & Full Stack Developer at SJT SOLUTIONS (2023-Present): Full stack development, infrastructure automation, container orchestration with Docker/Kubernetes, CI/CD pipeline development and maintenance.');
+            addOutput('Experience: SJT SOLUTIONS 2023-present - platform engineering, full stack development, MSP operations, Head of IT. LDC 2021-2023 - Java/Spring, Elasticsearch document search, ZUGFeRD. OPITZ 2007-2012 - Oracle, PL/SQL, Perl, enterprise systems.');
+            break;
+        case 'leadership':
+            addOutput('Leadership: technical leadership for a small internal IT team, mentoring apprentices, reviewing work, prioritizing tickets, coordinating maintenance windows, and staying hands-on in implementation and operations.');
             break;
         case 'github':
-            addOutput('GitHub: https://github.com/zoeliterally - Check out my projects and contributions!');
+            addOutput('GitHub: https://github.com/zoeliterally');
             break;
         case 'linkedin':
-            addOutput('LinkedIn: https://linkedin.com/in/zoeliterally - Connect with me professionally!');
+            addOutput('LinkedIn: https://linkedin.com/in/zoeliterally');
             break;
         case 'philosophy':
-            addOutput('"Automate everything that can be automated, optimize everything that can be optimized, and always keep learning." - My approach to technology and development.');
+            addOutput('Build systems that are understandable under pressure: clear interfaces, boring deployments, useful logs, explicit runbooks, and automation that earns its keep.');
             break;
         case 'focus':
-            addOutput('Current focus areas: Go Development (microservices), Docker & Kubernetes (container orchestration), Automation (reducing manual tasks), Modern Web Development (full stack solutions).');
+            addOutput('Current focus: platform engineering, internal tools, AI-assisted engineering, agentic coding workflows, operational automation, mentoring, and pragmatic systems that survive production pressure.');
             break;
-        case 'tolerate':
-            addOutput('Things I tolerate but don\'t love: Windows Server Administration, Active Directory Management, Microsoft 365/Entra ID, and the entire Microsoft ecosystem (necessary evil).');
+        case 'timeline':
+            addOutput('Timeline: 2007-2012 Oracle/Perl enterprise systems -> 2021-2023 Java/Spring search and retraining -> 2023-2026 platform engineering, MSP operations, AI-assisted engineering, and technical leadership.');
+            break;
+        case 'whoami':
+            addOutput('zoe: builder of internal tools, calm platforms, automation, and documentation that makes the next incident less mysterious.');
+            break;
+        case 'pwd':
+            addOutput('/home/zoe/portfolio');
+            break;
+        case 'ls':
+            addOutput('about.txt  portfolio.md  case-studies/  skills.json  ai-workflows.md  contact.link');
             break;
         case 'clear':
             clearTerminal();
