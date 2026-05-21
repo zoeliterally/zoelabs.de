@@ -22,8 +22,8 @@ My path runs from Oracle and legacy enterprise systems through Java/Spring and s
 ### **SJT SOLUTIONS** *(Current)*
 **Head of IT · Platform Engineering & Full Stack Development** | 2023 - Present
 - Internal tools with Java/Spring Boot, Python/FastAPI, Flask, and Go
-- Infrastructure automation with Ansible, Docker, Traefik, GitLab CI/CD, and Linux
-- MSP operations around Veeam, backup repositories, monitoring, SIEM, and migration work
+- Infrastructure automation with Ansible, Docker, Traefik, GitLab CI/CD, Linux, and Hetzner Dedicated/Cloud
+- MSP operations around Veeam, backup repositories, Checkmk Distributed/MSP monitoring as a customer/reseller service, SIEM, and migration work
 - Technical leadership for a small internal IT team, including mentoring and ticket prioritization
 - Daily AI-assisted engineering with OpenAI/ChatGPT/Codex, Claude, Gemini, and GitHub Copilot
 
@@ -56,7 +56,7 @@ My path runs from Oracle and legacy enterprise systems through Java/Spring and s
 - **CI/CD**: GitLab CI/CD, container builds, automated checks
 
 ### **Monitoring & Observability**
-- **Monitoring**: Checkmk, Wazuh, service and host-level checks
+- **Monitoring**: Checkmk Distributed/MSP, Wazuh, service and host-level checks
 
 ### **Backup & Recovery**
 - **Backup Solutions**: Veeam VSPC, managed repository servers, restore workflows
@@ -75,7 +75,7 @@ My path runs from Oracle and legacy enterprise systems through Java/Spring and s
 
 - **Public Portfolio**: recruiter-friendly overview across platform engineering, backend tools, AI-assisted engineering, MSP operations, search systems, leadership, and legacy modernization.
 - **Internal Tools**: SSH tunnel management, API/auth foundations, maintenance automation, ticket feedback tooling.
-- **Platform & Ops**: Docker service platform, Ansible automation, Veeam/MSP infrastructure, monitoring and SIEM.
+- **Platform & Ops**: Docker service platform, Ansible automation, Hetzner Dedicated/Cloud, Veeam/MSP infrastructure, Checkmk monitoring and SIEM.
 - **Search**: Java/Spring and Elasticsearch document search with Apache Tika.
 
 ---
